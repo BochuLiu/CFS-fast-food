@@ -117,7 +117,6 @@ actloc_5cities.plot(color = 'm', marker = 'o', markersize = 0.02)
 
 
 # ### 3.2. derive the measure of population density at DA level
-
 # check encoding of the population density csv file
 with open(cs_dir2 + '2016_PopDenDA.csv') as f:
     print(f)
@@ -176,7 +175,7 @@ pt.to_csv(cs_dir2 + 'CFS16_twDenFas.csv',sep=',',header=True,index=True)
 pd.read_csv(cs_dir2 + 'CFS16_twDenFas.csv',sep=',',header=0,index_col=None).head()
 
 
-# ### 5. buffer (with a radius of 500m, 1000m, 1500m) the activity locations
+# ### 4. buffer (with a radius of 500m, 1000m, 1500m) the activity locations
 # directly assign the buffer as the geometry column, which replaces the original point geometry, to maintain the attributes of actloc GeoDataFrame 
 actloc_pct = gpd.read_file(cs_dir + 'actloc_pct.shp')
 buf_500m = actloc_pct
@@ -213,7 +212,7 @@ plt.axis('equal')
 plt.show()
 
 
-# ### 4. load fast food restaurants
+# ### 5. load fast food restaurants
 sup = gpd.read_file(cs_dir + '2018_MRFEI_points/supermarket3.shp').to_crs(prov.crs)
 con = gpd.read_file(cs_dir + '2018_MRFEI_points/convenience2.shp').to_crs(prov.crs)
 fas = gpd.read_file(cs_dir + '2018_MRFEI_points/fast_food2.shp').to_crs(prov.crs)
@@ -254,7 +253,7 @@ gre5.plot(ax=ax, color='green', marker = 'o', markersize = 0.1)
 plt.show()
 
 
-# ### 5. assign the buf_500m attributes to fast food restaurants intersecting with it using spatialjoin
+# ### 6. assign the buf_500m attributes to fast food restaurants intersecting with it using spatialjoin
 buf_500m.crs = prov.crs
 buf_1000m.crs = prov.crs
 buf_1500m.crs = prov.crs
@@ -298,7 +297,7 @@ plt.axis('equal')
 plt.show()
 
 
-# ### 6. aggregate supermarket, convenience, fast food, green grocery by each participant
+# ### 7. aggregate supermarket, convenience, fast food, green grocery by each participant
 # ### calculate Ratio of fast food stores
 # calculate time-weighted ratio of fast food stores
 numsup500_act = sup_500.groupby(by=['user_id','location_i']).aggregate({'user_id':'count'})
