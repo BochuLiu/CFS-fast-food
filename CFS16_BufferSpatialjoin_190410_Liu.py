@@ -545,5 +545,5 @@ FasNum.to_csv(cs_dir2 + 'CFS16_FasNum_points.csv', sep = ',', header = True, ind
 FasNum = pd.read_csv(cs_dir2 + 'CFS16_FasNum_points.csv', sep=',', header=0, index_col=None)
 FasNum
 
-# citation 
+# This python file is only a portion of the computational analysis of the following publication.  
 # Liu, B., Widener, M., Burgoine, T., & Hammond, D. (2020). Association between time-weighted activity space-based exposures to fast food outlets and fast food consumption among young adults in urban Canada. International Journal of Behavioral Nutrition and Physical Activity, 17, 1-13.
